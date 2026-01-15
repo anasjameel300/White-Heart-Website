@@ -1,11 +1,5 @@
 # White Heart Café - Jeddah
 
-<div align="center">
-  <img src="https://images.unsplash.com/photo-1544254200-0df5275d33e7?q=80&w=2970&auto=format&fit=crop" alt="White Heart Cafe Banner" width="100%" style="border-radius: 8px; max-height: 400px; object-fit: cover;" />
-</div>
-
-<br />
-
 > **A premium digital experience capturing the essence of Jeddah's finest artisanal café.**
 
 White Heart Café is a modern, high-performance single-page application designed to showcase a luxury menu of signature cold teas, gourmet cookies, and premium gelato. Built with a focus on aesthetics and motion, the site features cinematic parallax scrolling, fluid page transitions, and a bespoke design system.
