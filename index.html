@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>White Heart Café | Jeddah</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap"
-    rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              dark: '#1A1818',
-              gold: '#C6A87C',
-              cream: '#F5F2EA',
-              stone: '#E6E2D8',
-              accent: '#8C3A3A'
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>White Heart Café | Jeddah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                dark: '#121111',
+                gold: '#D4AF37', // Refined Saudi Gold
+                cream: '#F9F7F2',
+                stone: '#EAE6DF',
+                accent: '#A64444'
+              }
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', '"Amiri"', 'serif'],
+              sans: ['"DM Sans"', '"IBM Plex Sans Arabic"', 'sans-serif'],
+              arabicSerif: ['"Amiri"', 'serif'],
+              arabicSans: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            },
+            backgroundImage: {
+              'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 250 250%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.08%22/%3E%3C/svg%3E')",
+              'mashrabiya': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M30 0l5.878 18.09h19.022l-15.39 11.18 5.878 18.09L30 36.18l-15.388 11.18 5.878-18.09-15.39-11.18h19.022L30 0z\" fill=\"%23C6A87C\" fill-opacity=\"0.03\"/%3E%3C/svg%3E')",
             }
-          },
-          fontFamily: {
-            serif: ['"Playfair Display"', 'serif'],
-            sans: ['"DM Sans"', 'sans-serif'],
-          },
-          backgroundImage: {
-            'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
           }
         }
       }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #F5F2EA;
-      color: #1A1818;
-    }
-
-    /* Custom scrollbar for webkit */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #F5F2EA;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #C6A87C;
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #1A1818;
-    }
-  </style>
+    </script>
+    <style>
+      body {
+        background-color: #F9F7F2;
+        color: #121111;
+        overflow-x: hidden;
+      }
+      /* Custom scrollbar - thin gold */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #F9F7F2;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D4AF37;
+        border-radius: 10px;
+      }
+      /* RTL Font Adjustments */
+      [dir="rtl"] {
+        font-family: "IBM Plex Sans Arabic", sans-serif;
+      }
+      [dir="rtl"] .font-serif {
+        font-family: "Amiri", serif;
+      }
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+    </style>
   <script type="importmap">
 {
   "imports": {
@@ -70,12 +74,10 @@
   }
 }
 </script>
-  <link rel="stylesheet" href="/index.css">
+<link rel="stylesheet" href="/index.css">
 </head>
-
-<body>
-  <div id="root"></div>
+  <body>
+    <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
-
 </html>

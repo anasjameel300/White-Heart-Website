@@ -1,95 +1,132 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Heart } from 'lucide-react';
-import { NAV_LINKS } from '../../constants';
+import React, { useState, useEffect, useContext } from 'react';
+import { Menu, X, Heart, Globe } from 'lucide-react';
+import { NAV_LINKS, UI_TEXT } from '../../constants';
+import { motion, AnimatePresence } from 'framer-motion';
+import { LanguageContext, NavigationContext } from '../../App';
 
 const Navbar: React.FC = () => {
+  const { lang, toggleLang } = useContext(LanguageContext);
+  const { view, setView } = useContext(NavigationContext);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Dynamic text color classes
-  const textColorClass = scrolled ? 'text-brand-dark' : 'text-brand-cream';
-  const logoColorClass = scrolled ? 'fill-brand-dark stroke-brand-dark' : 'fill-brand-cream stroke-brand-cream';
-  const buttonBgClass = scrolled ? 'bg-brand-dark text-brand-cream hover:bg-brand-gold' : 'bg-brand-cream text-brand-dark hover:bg-brand-gold hover:text-white';
-  const borderClass = scrolled ? 'border-brand-dark/5' : 'border-white/10';
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, linkId: string, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+
+    if (linkId === 'menu') {
+      setView('menu');
+      return;
+    }
+
+    if (view !== 'home') {
+      setView('home');
+      // Wait for view transition before scrolling
+      setTimeout(() => {
+        const target = document.querySelector(href);
+        if (target) {
+          window.scrollTo({
+            top: (target as HTMLElement).offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      }, 700);
+    } else {
+      const target = document.querySelector(href);
+      if (target) {
+        window.scrollTo({
+          top: (target as HTMLElement).offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  const isRTL = lang === 'ar';
+  const textColor = scrolled ? 'text-brand-dark' : 'text-brand-cream';
+  const logoColor = scrolled ? 'fill-brand-dark stroke-brand-dark' : 'fill-brand-cream stroke-brand-cream';
+  const buttonClass = scrolled ? 'bg-brand-dark text-brand-cream' : 'bg-brand-cream text-brand-dark';
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-700 ease-in-out ${scrolled
-        ? `bg-brand-cream/85 backdrop-blur-xl shadow-sm ${borderClass} py-4`
-        : 'bg-transparent py-8'
-        }`}
-    >
+    <nav className={`fixed w-full z-[100] transition-all duration-1000 ease-[0.22, 1, 0.36, 1] ${scrolled || view === 'menu' ? 'bg-brand-cream/95 backdrop-blur-2xl py-5 border-b border-brand-dark/10' : 'bg-transparent py-10'}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group relative z-50">
-          <div className={`relative w-8 h-8 flex items-center justify-center transition-transform duration-500 ${scrolled ? 'scale-90' : 'scale-100'}`}>
-            <Heart className={`w-full h-full transition-colors duration-500 ${logoColorClass}`} strokeWidth={1.5} />
-          </div>
-          <span className={`font-serif text-2xl font-bold tracking-tight transition-colors duration-500 ${textColorClass}`}>
-            White Heart
-          </span>
-        </a>
+        <button onClick={() => setView('home')} className="flex items-center gap-3 group relative z-[110]">
+           <Heart className={`w-8 h-8 transition-all duration-700 ${view === 'menu' ? 'fill-brand-dark stroke-brand-dark' : logoColor} ${scrolled ? 'scale-90' : 'scale-110'}`} />
+           <div className="flex flex-col text-left rtl:text-right">
+             <span className={`font-serif text-2xl font-bold tracking-tight transition-colors duration-700 ${view === 'menu' ? 'text-brand-dark' : textColor}`}>
+               {isRTL ? 'وايت هارت' : 'White Heart'}
+             </span>
+             <span className={`text-[8px] uppercase tracking-[0.3em] opacity-60 transition-colors duration-700 ${view === 'menu' ? 'text-brand-dark' : textColor}`}>
+               {isRTL ? 'كافيه وحلويات' : 'Café & Sweets'}
+             </span>
+           </div>
+        </button>
 
-        {/* Desktop Menu */}
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`font-sans text-sm font-medium tracking-widest uppercase transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full hover:text-brand-gold ${textColorClass}`}
+          {NAV_LINKS.map(link => (
+            <a 
+              key={link.id} 
+              href={link.href} 
+              onClick={(e) => handleNavClick(e, link.id, link.href)}
+              className={`font-sans text-xs font-bold tracking-[0.2em] uppercase transition-colors hover:text-brand-gold ${view === 'menu' ? 'text-brand-dark' : textColor}`}
             >
-              {link.name}
+              {link.name[lang]}
             </a>
           ))}
+          
+          <button 
+            onClick={toggleLang}
+            className={`flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.1em] border border-current px-3 py-1 rounded-full transition-all hover:bg-brand-gold hover:border-brand-gold hover:text-white ${view === 'menu' ? 'text-brand-dark border-brand-dark' : textColor}`}
+          >
+            <Globe size={14} />
+            {lang === 'en' ? 'العربية' : 'EN'}
+          </button>
 
-          {/* Order Button - Hides on Scroll */}
-          <div className={`overflow-hidden transition-all duration-500 ease-[0.76, 0, 0.24, 1] ${scrolled ? 'max-w-0 opacity-0 -ml-5' : 'max-w-[150px] opacity-100'}`}>
-            <a
-              href="#delivery"
-              className={`block px-6 py-2 font-sans text-xs font-bold uppercase tracking-widest transition-colors duration-300 whitespace-nowrap rounded-sm ${buttonBgClass}`}
-            >
-              Order Now
-            </a>
-          </div>
+          <a href="#delivery" onClick={(e) => handleNavClick(e, 'delivery', '#delivery')} className={`px-8 py-3 font-sans text-[10px] font-bold uppercase tracking-[0.3em] transition-all rounded-sm hover:bg-brand-gold hover:text-white ${view === 'menu' ? 'bg-brand-dark text-brand-cream' : buttonClass}`}>
+            {UI_TEXT.orderNow[lang]}
+          </a>
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={`md:hidden z-50 relative p-2 transition-colors duration-300 ${isOpen ? 'text-brand-dark' : textColorClass}`}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <button onClick={toggleLang} className={`p-2 ${view === 'menu' ? 'text-brand-dark' : textColor}`}>
+            {lang === 'en' ? 'AR' : 'EN'}
+          </button>
+          <button onClick={() => setIsOpen(!isOpen)} className={`z-[110] ${isOpen ? 'text-brand-dark' : (view === 'menu' ? 'text-brand-dark' : textColor)}`}>
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-brand-cream z-40 flex flex-col items-center justify-center gap-8 transition-all duration-700 ease-[0.76, 0, 0.24, 1] ${isOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}`}>
-        {NAV_LINKS.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            onClick={() => setIsOpen(false)}
-            className="font-serif text-4xl text-brand-dark hover:text-brand-gold transition-colors"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ clipPath: isRTL ? 'circle(0% at 10% 10%)' : 'circle(0% at 90% 10%)' }}
+            animate={{ clipPath: isRTL ? 'circle(150% at 10% 10%)' : 'circle(150% at 90% 10%)' }}
+            exit={{ clipPath: isRTL ? 'circle(0% at 10% 10%)' : 'circle(0% at 90% 10%)' }}
+            transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 bg-brand-cream z-[105] flex flex-col items-center justify-center gap-8"
           >
-            {link.name}
-          </a>
-        ))}
-        <a
-          href="#delivery"
-          onClick={() => setIsOpen(false)}
-          className="mt-8 px-8 py-3 bg-brand-dark text-brand-cream font-sans text-sm font-bold uppercase tracking-widest"
-        >
-          Order Now
-        </a>
-      </div>
+            {NAV_LINKS.map(link => (
+              <a key={link.id} href={link.href} onClick={(e) => handleNavClick(e, link.id, link.href)} className="font-serif text-5xl text-brand-dark hover:text-brand-gold tracking-tighter">
+                {link.name[lang]}
+              </a>
+            ))}
+            <a href="#delivery" onClick={(e) => handleNavClick(e, 'delivery', '#delivery')} className="mt-12 px-12 py-5 bg-brand-dark text-brand-cream font-sans text-xs font-bold uppercase tracking-[0.3em]">
+              {UI_TEXT.orderNow[lang]}
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
