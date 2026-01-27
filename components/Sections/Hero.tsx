@@ -134,63 +134,65 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Composition Container */}
-          <div className="relative h-[600px] lg:h-[800px] w-full hidden lg:flex items-center justify-center lg:order-2">
+          {/* Composition Container: Professional Collage - Visibility Fix */}
+          <div className="relative h-[700px] lg:h-[900px] w-full hidden lg:flex items-center justify-center lg:order-2">
 
-            {/* Tertiary: Premium Gelato (Local asset) */}
+            {/* Top-Right Layer: Context (EmptyName 55) */}
             <motion.div
-              initial={{ opacity: 0, x: 100, rotate: 10 }}
-              animate={{ opacity: 1, x: 0, rotate: 0 }}
-              transition={{ duration: 1.5, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-              className={`absolute top-[10%] ${isRTL ? 'left-4' : 'right-4'} w-[35%] h-[30%] z-[1] will-change-transform`}
+              style={{ y: useTransform(smoothYProgress, [0, 1], [0, -100]) }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 40px 80px rgba(0,0,0,0.4)" }}
+              className={`absolute top-[5%] ${isRTL ? 'left-[10%]' : 'right-[10%]'} w-[45%] h-[35%] z-10`}
             >
-              <div className="relative w-full h-full overflow-hidden rounded-md shadow-xl border border-white/10 group">
-                <img
-                  src="/assets/Ice cream.jpg"
-                  alt="Premium Gelato"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-              </div>
+              <motion.div
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-full h-full overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 group bg-brand-stone/5"
+              >
+                <img src="/assets/EmptyName 55.jpg" alt="Artisanal Ambience" className="w-full h-full object-cover transition-transform duration-[8s] group-hover:scale-110" />
+              </motion.div>
             </motion.div>
 
-            {/* Main Focal Image: White Heart Signature (Local asset) */}
+            {/* Middle Layer: main focal (EmptyName 54) */}
             <motion.div
               style={{ y: yImageLarge }}
-              initial={{ opacity: 0, scale: 0.9, x: 50 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
-              className={`absolute top-[15%] ${isRTL ? 'right-[10%]' : 'left-[10%]'} w-[70%] h-[70%] z-[2] will-change-transform`}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 60px 120px rgba(0,0,0,0.5)" }}
+              className={`absolute top-[22%] ${isRTL ? 'right-[5%]' : 'left-[5%]'} w-[65%] h-[55%] z-20`}
             >
-              <div className="relative w-full h-full overflow-hidden rounded-lg shadow-[0_40px_100px_rgba(0,0,0,0.6)] border border-white/5 bg-brand-stone/5 group">
-                <img
-                  src="/assets/Ice Tea.jpg"
-                  alt="Signature Iced Tea"
-                  className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent h-1/3 bottom-0" />
-                <div className="absolute bottom-6 left-6 right-6 flex items-center gap-4 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <span className="h-[1px] w-8 bg-brand-gold"></span>
-                  <span className="text-[9px] uppercase tracking-[0.3em] font-sans font-bold text-brand-gold">Signature Selection</span>
-                </div>
-              </div>
+              <motion.div
+                animate={{ y: [10, -10, 10] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-full h-full overflow-hidden rounded-3xl shadow-[0_40px_100px_rgba(0,0,0,0.6)] border border-white/10 bg-brand-stone/5 group"
+              >
+                <img src="/assets/EmptyName 54.jpg" alt="White Heart Selection" className="w-full h-full object-cover transition-transform duration-[12s] group-hover:scale-110" />
+              </motion.div>
             </motion.div>
 
-            {/* Secondary: Craft Cookies (Local asset) */}
+            {/* Bottom Layer: Details (EmptyName 53) */}
             <motion.div
               style={{ y: yImageSmall }}
-              initial={{ opacity: 0, y: 100, x: -30 }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
-              transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
-              className={`absolute bottom-[5%] ${isRTL ? '-right-4' : '-left-4'} w-[45%] h-[40%] z-[3] will-change-transform`}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 1.1, ease: "easeOut" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 40px 90px rgba(0,0,0,0.4)" }}
+              className={`absolute bottom-[10%] ${isRTL ? 'left-[15%]' : 'right-[15%]'} w-[50%] h-[40%] z-30`}
             >
-              <div className="relative w-full h-full overflow-hidden rounded-md shadow-2xl border-4 border-brand-dark bg-brand-stone/5 group">
-                <img
-                  src="/assets/Clasic cookies.jpg"
-                  alt="Handcrafted Cookies"
-                  className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110"
-                />
-              </div>
+              <motion.div
+                animate={{ y: [-8, 8, -8] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-full h-full overflow-hidden rounded-2xl shadow-[0_30px_70px_rgba(0,0,0,0.5)] border-4 border-brand-dark group hover:border-brand-gold/50 transition-colors duration-500 bg-brand-stone/5"
+              >
+                <img src="/assets/EmptyName 53.jpg" alt="Handcrafted Details" className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-115" />
+              </motion.div>
             </motion.div>
+
+            {/* Decorative Glow Elements */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-gold/5 blur-[120px] -z-10 rounded-full scale-110" />
           </div>
         </div>
       </div>
