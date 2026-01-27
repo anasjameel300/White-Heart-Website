@@ -34,51 +34,51 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Signature Ice Tea', ar: 'آيس تي وايت هارت' },
     description: { en: 'Our famous house blend, steeped for 12 hours with a hint of peach.', ar: 'مزيجنا الخاص، منقوع لمدة ١٢ ساعة مع لمسة من الخوخ المنعش.' },
     category: 'Cold Tea',
-    image: 'https://images.unsplash.com/photo-1544254200-0df5275d33e7?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/Ice Tea.jpg',
     popular: true,
     pairings: ['3', '5']
-  },
-  {
-    id: '2',
-    name: { en: 'Hibiscus Rose Brew', ar: 'مشروب الكركديه والورد' },
-    description: { en: 'Refreshing cold hibiscus tea with organic rose petals and lime.', ar: 'شاي الكركديه المنعش مع بتلات الورد العضوية والليمون.' },
-    category: 'Cold Tea',
-    image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800',
-    pairings: ['4']
   },
   {
     id: '3',
     name: { en: 'Classic Chocolate Chunk', ar: 'كلاسيك تشوكليت تشانك' },
     description: { en: 'Warm, gooey interior with chunks of Belgian milk chocolate.', ar: 'دافئة وهشة من الداخل مع قطع شوكولاتة بلجيكية فاخرة.' },
     category: 'Cookies',
-    image: 'https://images.unsplash.com/photo-1621236378699-8597f840b4a8?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/Clasic cookies.jpg',
     popular: true,
-    pairings: ['1', '6']
+    pairings: ['1', '8']
   },
   {
     id: '4',
-    name: { en: 'Salted Caramel Pecan', ar: 'سولتيد كراميل بيكان' },
-    description: { en: 'Buttery cookie with sea salt caramel and toasted pecans.', ar: 'كوكيز الزبدة مع الكراميل المملح والبيكان المحمص.' },
+    name: { en: 'Crunchy Chocolate Cookie', ar: 'كوكيز الشوكولاتة المقرمشة' },
+    description: { en: 'Extra crunchy exterior with a rich dark chocolate heart.', ar: 'قوام مقرمش من الخارج مع قلب من الشوكولاتة الداكنة الغنية.' },
     category: 'Cookies',
-    image: 'https://images.unsplash.com/photo-1499636138143-bd630f5cf446?auto=format&fit=crop&q=80&w=800',
-    pairings: ['2', '5']
+    image: '/assets/Crunchy cookies .jpg',
+    pairings: ['1']
   },
   {
     id: '5',
-    name: { en: 'Pistachio Gelato', ar: 'جيلاتو الفستق' },
-    description: { en: 'Authentic Italian-style gelato made with premium roasted pistachios.', ar: 'جيلاتو إيطالي أصيل مصنوع من الفستق المحمص الفاخر.' },
+    name: { en: 'Premium Gelato', ar: 'جيلاتو فاخر' },
+    description: { en: 'Authentic Italian-style gelato with premium natural flavors.', ar: 'جيلاتو إيطالي أصيل بنكهات طبيعية فاخرة.' },
     category: 'Ice Cream',
-    image: 'https://images.unsplash.com/photo-1557142046-c704a3adf364?auto=format&fit=crop&q=80&w=800',
+    image: '/assets/Ice cream.jpg',
     popular: true,
     pairings: ['1', '3']
   },
   {
-    id: '6',
-    name: { en: 'Madagascar Vanilla', ar: 'فانيليا مدغشقر' },
-    description: { en: 'Creamy gelato infused with real Madagascar vanilla beans.', ar: 'جيلاتو كريمي محضر من حبوب الفانيليا الطبيعية من مدغشقر.' },
-    category: 'Ice Cream',
-    image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&q=80&w=800',
-    pairings: ['3']
+    id: '7',
+    name: { en: 'Caramel Cheesecake', ar: 'تشيزكيك الكراميل' },
+    description: { en: 'Creamy New York style cheesecake topped with rich salted caramel.', ar: 'تشيزكيك كريمي على الطريقة النيويوركية مغطى بالكراميل المملح الغني.' },
+    category: 'Cakes',
+    image: '/assets/CheeseCake  Caramel.jpg',
+    pairings: ['8']
+  },
+  {
+    id: '8',
+    name: { en: 'Signature Black Coffee', ar: 'بلاك كوفي وايت هارت' },
+    description: { en: 'Expertly roasted beans brewed to perfection for a bold start.', ar: 'قهوة مختصة محضرة بعناية لبداية يوم مليئة بالنشاط.' },
+    category: 'Coffee',
+    image: '/assets/Black Coffee L.jpg',
+    pairings: ['7', '3']
   }
 ];
 
@@ -129,7 +129,7 @@ export const LOCATIONS: LocationItem[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    text: { 
+    text: {
       en: "The Signature Cold Tea is unlike anything else in Jeddah. Perfectly balanced.",
       ar: "شاي وايت هارت المثلج لا يعلى عليه في جدة. توازن مثالي في النكهات."
     },
@@ -139,7 +139,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     id: '2',
-    text: { 
+    text: {
       en: "Warm chocolate chunk cookies paired with their pistachio gelato is my weekend ritual.",
       ar: "كوكيز الشوكولاتة الدافئة مع جيلاتو الفستق هي طقوسي الخاصة في نهاية الأسبوع."
     },
