@@ -1,0 +1,32 @@
+[
+  {
+    "id": "11a73cc8-e9f4-478d-a3f7-c25a980e100e",
+    "title": "Span",
+    "comment": "its getting hidden during scrolling , it should hide during scrolling",
+    "selector": "div.sm:flex-row.gap-5:nth-child(4) > button.group.relative > span.absolute.inset-0:nth-child(1)",
+    "boundingRect": {
+      "x": 37,
+      "y": 674,
+      "w": 189,
+      "h": 52
+    },
+    "screenshotPath": "./screenshots/moat-1769456638210-fga2ztj6n.png",
+    "status": "to do",
+    "timestamp": 1769456638329
+  },
+  {
+    "id": "95546e88-13d3-44b7-a756-cd988f30ee00",
+    "title": "Link: Find a Branch",
+    "comment": "its getting hide during scrolling",
+    "selector": "a[href=\"#locations\"]",
+    "boundingRect": {
+      "x": 436,
+      "y": 674,
+      "w": 195,
+      "h": 52
+    },
+    "screenshotPath": "./screenshots/moat-1769456660978-3bvoky3pn.png",
+    "status": "to do",
+    "timestamp": 1769456661102
+  }
+]

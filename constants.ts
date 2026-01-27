@@ -32,53 +32,76 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: '1',
     name: { en: 'Signature Ice Tea', ar: 'آيس تي وايت هارت' },
-    description: { en: 'Our famous house blend, steeped for 12 hours with a hint of peach.', ar: 'مزيجنا الخاص، منقوع لمدة ١٢ ساعة مع لمسة من الخوخ المنعش.' },
+    description: { en: 'Refreshing house-blend ice tea. (163 Cal)', ar: 'آيس تي بخلطة وايت هارت المنعشة. (١٦٣ سعرة)' },
     category: 'Cold Tea',
-    image: 'https://images.unsplash.com/photo-1544254200-0df5275d33e7?auto=format&fit=crop&q=80&w=800',
+    price: '16 rs',
+    image: '/assets/Ice Tea.jpg',
     popular: true,
-    pairings: ['3', '5']
+    pairings: ['2', '4']
   },
   {
     id: '2',
-    name: { en: 'Hibiscus Rose Brew', ar: 'مشروب الكركديه والورد' },
-    description: { en: 'Refreshing cold hibiscus tea with organic rose petals and lime.', ar: 'شاي الكركديه المنعش مع بتلات الورد العضوية والليمون.' },
-    category: 'Cold Tea',
-    image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=800',
-    pairings: ['4']
+    name: { en: 'Classic Cookies', ar: 'كوكيز كلاسيك' },
+    description: { en: 'Traditional warm chocolate chip cookies. (347 Cal)', ar: 'كوكيز كلاسيك دافئ بقطع الشوكولاتة. (٣٤٧ سعرة)' },
+    category: 'Cookies',
+    price: '10 rs',
+    image: '/assets/Clasic cookies.jpg',
+    popular: true,
+    pairings: ['1', '7']
   },
   {
     id: '3',
-    name: { en: 'Classic Chocolate Chunk', ar: 'كلاسيك تشوكليت تشانك' },
-    description: { en: 'Warm, gooey interior with chunks of Belgian milk chocolate.', ar: 'دافئة وهشة من الداخل مع قطع شوكولاتة بلجيكية فاخرة.' },
+    name: { en: 'Crunchy Cookies', ar: 'كوكيز كرانشي' },
+    description: { en: 'Crispy cookies with a perfect bite. (347 Cal)', ar: 'كوكيز كرانشي مقرمش ومثالي. (٣٤٧ سعرة)' },
     category: 'Cookies',
-    image: 'https://images.unsplash.com/photo-1621236378699-8597f840b4a8?auto=format&fit=crop&q=80&w=800',
-    popular: true,
-    pairings: ['1', '6']
+    price: '13 rs',
+    image: '/assets/Crunchy cookies .jpg',
+    pairings: ['1']
   },
   {
     id: '4',
-    name: { en: 'Salted Caramel Pecan', ar: 'سولتيد كراميل بيكان' },
-    description: { en: 'Buttery cookie with sea salt caramel and toasted pecans.', ar: 'كوكيز الزبدة مع الكراميل المملح والبيكان المحمص.' },
-    category: 'Cookies',
-    image: 'https://images.unsplash.com/photo-1499636138143-bd630f5cf446?auto=format&fit=crop&q=80&w=800',
-    pairings: ['2', '5']
+    name: { en: 'Vanilla Ice Cream', ar: 'آيس كريم فانيليا' },
+    description: { en: 'Smooth and creamy vanilla gelato. (180 Cal)', ar: 'آيس كريم فانيليا كريمي وناعم. (١٨٠ سعرة)' },
+    category: 'Ice Cream',
+    price: '5 rs',
+    image: '/assets/Ice cream.jpg',
+    pairings: ['2', '3']
   },
   {
     id: '5',
-    name: { en: 'Pistachio Gelato', ar: 'جيلاتو الفستق' },
-    description: { en: 'Authentic Italian-style gelato made with premium roasted pistachios.', ar: 'جيلاتو إيطالي أصيل مصنوع من الفستق المحمص الفاخر.' },
-    category: 'Ice Cream',
-    image: 'https://images.unsplash.com/photo-1557142046-c704a3adf364?auto=format&fit=crop&q=80&w=800',
-    popular: true,
-    pairings: ['1', '3']
+    name: { en: 'Berry Cheesecake', ar: 'تشيزكيك التوت' },
+    description: { en: 'Rich cheesecake topped with fresh berry compote. (356 Cal)', ar: 'تشيزكيك غني مُغطى بصلصة التوت الطازجة. (٣٥٦ سعرة)' },
+    category: 'Cakes',
+    price: '18 rs',
+    image: '/assets/cheesecake Raspberry .jpg',
+    pairings: ['7']
   },
   {
     id: '6',
-    name: { en: 'Madagascar Vanilla', ar: 'فانيليا مدغشقر' },
-    description: { en: 'Creamy gelato infused with real Madagascar vanilla beans.', ar: 'جيلاتو كريمي محضر من حبوب الفانيليا الطبيعية من مدغشقر.' },
-    category: 'Ice Cream',
-    image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&q=80&w=800',
-    pairings: ['3']
+    name: { en: 'Caramel Cheesecake', ar: 'تشيزكيك الكراميل' },
+    description: { en: 'Creamy cheesecake with a rich caramel finish. (356 Cal)', ar: 'تشيزكيك كريمي مع طبقة غنية من الكراميل. (٣٥٦ سعرة)' },
+    category: 'Cakes',
+    price: '18 rs',
+    image: '/assets/CheeseCake  Caramel.jpg',
+    pairings: ['8']
+  },
+  {
+    id: '7',
+    name: { en: 'Americano', ar: 'أمريكانو' },
+    description: { en: 'Pure black coffee brewed from premium beans. (4 Cal)', ar: 'قهوة سوداء صافية محضرة من أجود الأنواع. (٤ سعرات)' },
+    category: 'Coffee',
+    price: '13 rs',
+    image: '/assets/Black Coffee L.jpg',
+    pairings: ['2', '5']
+  },
+  {
+    id: '8',
+    name: { en: 'Classic Cookies with Ice Cream', ar: 'كوكيز مع آيس كريم' },
+    description: { en: 'A divine combination of warm cookies and cold gelato.', ar: 'مزيج رائع بين الكوكيز الدافئ والآيس كريم البارد.' },
+    category: 'Cookies',
+    price: '12 rs',
+    image: '/assets/Clasic cookies with ice cream .jpg',
+    pairings: ['7']
   }
 ];
 
@@ -129,7 +152,7 @@ export const LOCATIONS: LocationItem[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    text: { 
+    text: {
       en: "The Signature Cold Tea is unlike anything else in Jeddah. Perfectly balanced.",
       ar: "شاي وايت هارت المثلج لا يعلى عليه في جدة. توازن مثالي في النكهات."
     },
@@ -139,7 +162,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     id: '2',
-    text: { 
+    text: {
       en: "Warm chocolate chunk cookies paired with their pistachio gelato is my weekend ritual.",
       ar: "كوكيز الشوكولاتة الدافئة مع جيلاتو الفستق هي طقوسي الخاصة في نهاية الأسبوع."
     },

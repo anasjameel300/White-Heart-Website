@@ -12,7 +12,7 @@ export interface MenuItem {
   name: LocalizedString;
   description: LocalizedString;
   price?: string;
-  category: 'Cold Tea' | 'Cookies' | 'Ice Cream' | 'Coffee';
+  category: 'Cold Tea' | 'Cookies' | 'Ice Cream' | 'Coffee' | 'Cakes';
   image: string;
   popular?: boolean;
   pairings?: string[]; // IDs of recommended items
