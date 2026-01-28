@@ -32,7 +32,7 @@ const Testimonials: React.FC = () => {
           </Reveal>
         </div>
 
-        <div className="relative min-h-[400px] flex items-center justify-center">
+        <div className="relative min-h-[300px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex + lang}
@@ -48,12 +48,12 @@ const Testimonials: React.FC = () => {
                 ))}
               </div>
 
-              <p className="font-serif text-2xl md:text-4xl text-brand-stone leading-snug italic mb-12">
+              <p className="font-serif text-2xl md:text-4xl text-brand-stone leading-normal italic mb-12 break-words">
                 "{TESTIMONIALS[activeIndex].text[lang]}"
               </p>
 
               <div>
-                <h4 className="font-sans font-bold text-brand-gold uppercase tracking-[0.3em] text-sm mb-2">
+                <h4 className="font-sans font-bold text-brand-gold uppercase tracking-[0.3em] text-sm mb-2 break-words">
                   {TESTIMONIALS[activeIndex].author[lang]}
                 </h4>
                 <p className="font-sans text-brand-stone/40 text-xs uppercase tracking-widest">

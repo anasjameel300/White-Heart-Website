@@ -28,5 +28,20 @@
     "screenshotPath": "./screenshots/moat-1769456660978-3bvoky3pn.png",
     "status": "to do",
     "timestamp": 1769456661102
+  },
+  {
+    "id": "421fcce2-5de6-4fbf-9d58-0072f0bb286d",
+    "title": "Container",
+    "comment": "inckrease the size of the container so that it can occupy the available blank space , and texts are clearly visible without clipping",
+    "selector": "div.relative.z-20:nth-child(5) > div.lg:grid-cols-2.gap-20 > div.justify-center.lg:order-1:nth-child(1)",
+    "boundingRect": {
+      "x": 367,
+      "y": 182,
+      "w": 525,
+      "h": 694
+    },
+    "screenshotPath": "./screenshots/moat-1769601318443-wzs4e35mh.png",
+    "status": "to do",
+    "timestamp": 1769601318569
   }
 ]

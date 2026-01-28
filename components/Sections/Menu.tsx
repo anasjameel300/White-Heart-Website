@@ -59,8 +59,8 @@ const Menu: React.FC<MenuProps> = ({ teaser = false }) => {
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
                   className={`text-xs font-sans uppercase tracking-[0.3em] px-8 py-4 transition-all relative group ${activeCategory === cat.id
-                      ? 'text-brand-dark font-bold'
-                      : 'text-brand-dark/30 hover:text-brand-dark'
+                    ? 'text-brand-dark font-bold'
+                    : 'text-brand-dark/30 hover:text-brand-dark'
                     }`}
                 >
                   {cat.name[lang]}
@@ -90,14 +90,14 @@ const Menu: React.FC<MenuProps> = ({ teaser = false }) => {
                 </div>
                 <div className={`flex flex-col gap-4 ${isRTL ? 'text-right' : 'text-left'}`}>
                   <div className={`flex justify-between items-baseline gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <h4 className="font-serif text-3xl text-brand-dark group-hover:text-brand-gold transition-colors duration-500 tracking-tight">
+                    <h4 className="font-serif text-3xl text-brand-dark group-hover:text-brand-gold transition-colors duration-500 tracking-tight break-words">
                       {item.name[lang]}
                     </h4>
                     <span className="font-sans text-brand-gold font-bold text-sm tracking-widest uppercase">
                       {item.price}
                     </span>
                   </div>
-                  <p className="font-sans text-brand-dark/50 text-base md:text-lg leading-relaxed max-w-sm">
+                  <p className="font-sans text-brand-dark/50 text-base md:text-lg leading-loose max-w-sm break-words">
                     {item.description[lang]}
                   </p>
                 </div>

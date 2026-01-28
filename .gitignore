@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Moat task system
+.moat/
+
+# Claude Code configuration
+.claude/

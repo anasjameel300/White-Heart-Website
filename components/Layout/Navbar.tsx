@@ -58,31 +58,31 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         {/* Logo */}
         <button onClick={() => setView('home')} className="flex items-center gap-3 group relative z-[110]">
-           <Heart className={`w-8 h-8 transition-all duration-700 ${view === 'menu' ? 'fill-brand-dark stroke-brand-dark' : logoColor} ${scrolled ? 'scale-90' : 'scale-110'}`} />
-           <div className="flex flex-col text-left rtl:text-right">
-             <span className={`font-serif text-2xl font-bold tracking-tight transition-colors duration-700 ${view === 'menu' ? 'text-brand-dark' : textColor}`}>
-               {isRTL ? 'وايت هارت' : 'White Heart'}
-             </span>
-             <span className={`text-[8px] uppercase tracking-[0.3em] opacity-60 transition-colors duration-700 ${view === 'menu' ? 'text-brand-dark' : textColor}`}>
-               {isRTL ? 'كافيه وحلويات' : 'Café & Sweets'}
-             </span>
-           </div>
+          <Heart className={`w-8 h-8 transition-all duration-700 ${view === 'menu' ? 'fill-brand-dark stroke-brand-dark' : logoColor} ${scrolled ? 'scale-90' : 'scale-110'}`} />
+          <div className="flex flex-col text-left rtl:text-right">
+            <span className={`font-serif text-2xl font-bold tracking-tight transition-colors duration-700 ${view === 'menu' ? 'text-brand-dark' : textColor}`}>
+              {isRTL ? 'وايت هارت' : 'White Heart'}
+            </span>
+            <span className={`text-[8px] uppercase tracking-[0.3em] opacity-60 transition-colors duration-700 ${view === 'menu' ? 'text-brand-dark' : textColor}`}>
+              {isRTL ? 'كافيه وحلويات' : 'Café & Sweets'}
+            </span>
+          </div>
         </button>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10">
           {NAV_LINKS.map(link => (
-            <a 
-              key={link.id} 
-              href={link.href} 
+            <a
+              key={link.id}
+              href={link.href}
               onClick={(e) => handleNavClick(e, link.id, link.href)}
               className={`font-sans text-xs font-bold tracking-[0.2em] uppercase transition-colors hover:text-brand-gold ${view === 'menu' ? 'text-brand-dark' : textColor}`}
             >
               {link.name[lang]}
             </a>
           ))}
-          
-          <button 
+
+          <button
             onClick={toggleLang}
             className={`flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.1em] border border-current px-3 py-1 rounded-full transition-all hover:bg-brand-gold hover:border-brand-gold hover:text-white ${view === 'menu' ? 'text-brand-dark border-brand-dark' : textColor}`}
           >
@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ clipPath: isRTL ? 'circle(0% at 10% 10%)' : 'circle(0% at 90% 10%)' }}
             animate={{ clipPath: isRTL ? 'circle(150% at 10% 10%)' : 'circle(150% at 90% 10%)' }}
             exit={{ clipPath: isRTL ? 'circle(0% at 10% 10%)' : 'circle(0% at 90% 10%)' }}
@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
             className="fixed inset-0 bg-brand-cream z-[105] flex flex-col items-center justify-center gap-8"
           >
             {NAV_LINKS.map(link => (
-              <a key={link.id} href={link.href} onClick={(e) => handleNavClick(e, link.id, link.href)} className="font-serif text-5xl text-brand-dark hover:text-brand-gold tracking-tighter">
+              <a key={link.id} href={link.href} onClick={(e) => handleNavClick(e, link.id, link.href)} className="font-serif text-5xl text-brand-dark hover:text-brand-gold tracking-tighter break-words">
                 {link.name[lang]}
               </a>
             ))}
