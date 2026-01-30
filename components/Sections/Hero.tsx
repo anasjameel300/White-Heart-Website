@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { LanguageContext, NavigationContext } from '../../App';
 import { UI_TEXT } from '../../constants';
@@ -31,43 +31,65 @@ const Hero: React.FC = () => {
 
   const isRTL = lang === 'ar';
 
-  // Content Variants for efficient staggering
-  const containerVariants = {
+  // Premium Reveal Variants
+  const revealContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+        when: "afterChildren"
       }
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const revealItemVariants = {
+    hidden: { y: "110%", opacity: 0, rotateX: 10 },
     visible: {
+      y: "0%",
       opacity: 1,
-      y: 0,
+      rotateX: 0,
       transition: {
         duration: 0.8,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    },
+    exit: {
+      y: "-110%",
+      opacity: 0,
+      transition: {
+        duration: 0.5,
         ease: [0.16, 1, 0.3, 1]
       }
     }
   };
 
-  const titleVariants = {
-    hidden: { y: "100%" },
+  const lineVariants = {
+    hidden: { scaleX: 0, originX: 0 },
     visible: {
-      y: 0,
+      scaleX: 1,
       transition: {
         duration: 0.8,
         ease: [0.16, 1, 0.3, 1]
       }
+    },
+    exit: {
+      scaleX: 0,
+      originX: 1,
+      transition: { duration: 0.5 }
     }
   };
 
   return (
-    <section ref={containerRef} className="relative min-h-screen w-full flex items-center bg-brand-dark overflow-hidden pt-48 lg:pt-32">
+    <section ref={containerRef} className="relative min-h-screen w-full flex items-center bg-brand-dark overflow-hidden pt-24 lg:pt-20">
       {/* Background Layering with Parallax */}
       <motion.div
         style={{ y: yBg }}
@@ -93,77 +115,91 @@ const Hero: React.FC = () => {
         className="absolute bottom-[-5%] right-[-5%] w-[50%] h-[50%] bg-brand-accent/5 rounded-full blur-[70px] pointer-events-none will-change-[transform,opacity]"
       />
 
-      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full py-16 lg:py-32">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full py-8 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center min-h-[80vh] lg:min-h-0">
 
           {/* Hero Text Content */}
-          <motion.div
-            style={{ y: yText, scale: scaleHero }}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className={`flex flex-col justify-center ${isRTL ? 'lg:order-2 rtl:text-right items-end' : 'lg:order-1 text-left items-start'} relative z-20 will-change-transform py-8 lg:py-16`}
-          >
-            <motion.div
-              variants={itemVariants}
-              className={`flex items-center gap-6 mb-12 lg:mb-16 ${isRTL ? 'flex-row-reverse' : ''}`}
-            >
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: 80 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="h-[1px] bg-brand-gold/80"
-              />
-              <span className="font-sans text-brand-gold text-xs md:text-sm font-bold tracking-[0.4em] uppercase whitespace-nowrap">
-                {UI_TEXT.estJeddah[lang]}
-              </span>
-            </motion.div>
-
-            <div className="mb-12 lg:mb-16 w-full">
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-brand-cream font-medium leading-[1.3] tracking-tight break-words hyphens-auto">
-                {isRTL ? (
-                  <div className="flex flex-col gap-2 lg:gap-3">
-                    <div className="overflow-visible">
-                      <motion.span variants={titleVariants} className="block break-words">جوهر</motion.span>
-                    </div>
-                    <div className="overflow-visible">
-                      <motion.span variants={titleVariants} className="block italic text-brand-gold break-words">كرم الضيافة</motion.span>
-                    </div>
+          {/* Hero Text Content */}
+          <div className={`flex flex-col justify-center ${isRTL ? 'lg:order-2 rtl:text-right items-end' : 'lg:order-1 text-left items-start'} relative z-20 will-change-transform py-8 lg:py-16 min-h-[400px]`}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={lang}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={revealContainerVariants}
+                className="w-full"
+              >
+                {/* Est. Label */}
+                <div className={`flex items-center gap-6 mb-8 lg:mb-12 overflow-hidden ${isRTL ? 'flex-row-reverse' : ''}`}>
+                  <motion.span
+                    variants={lineVariants}
+                    className="h-[1px] w-20 bg-brand-gold/80"
+                  />
+                  <div className="overflow-hidden">
+                    <motion.span
+                      variants={revealItemVariants}
+                      className="block font-sans text-brand-gold text-xs md:text-sm font-bold tracking-[0.4em] uppercase whitespace-nowrap"
+                    >
+                      {UI_TEXT.estJeddah[lang]}
+                    </motion.span>
                   </div>
-                ) : (
-                  <div className="flex flex-col gap-2 lg:gap-3">
-                    <div className="overflow-visible">
-                      <motion.span variants={titleVariants} className="block break-words">The Essence of</motion.span>
-                    </div>
-                    <div className="overflow-visible">
-                      <motion.span variants={titleVariants} className="block italic text-brand-gold break-words">Pure Hospitality</motion.span>
-                    </div>
-                  </div>
-                )}
-              </h1>
-            </div>
+                </div>
 
-            <motion.p
-              variants={itemVariants}
-              className={`max-w-xl text-brand-stone/70 font-sans text-lg md:text-xl lg:text-2xl leading-relaxed mb-16 lg:mb-20 break-words ${isRTL ? 'text-right' : 'text-left'}`}
-            >
-              {isRTL
-                ? 'رحلة من المذاق الرفيع في قلب جدة. اكتشف روح الشاي المثلج والحلويات المصنوعة يدوياً، بلمسة من العراقة العربية.'
-                : 'A journey of refined taste in the heart of Jeddah. Discover the soul of artisanal cold tea and handcrafted sweets, served with timeless Arabian grace.'}
-            </motion.p>
+                {/* Main Heading */}
+                <div className="mb-8 lg:mb-12 w-full">
+                  <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-brand-cream font-medium leading-[1.1] tracking-tight">
+                    {isRTL ? (
+                      <div className="flex flex-col gap-1 lg:gap-2">
+                        <div className="overflow-hidden">
+                          <motion.span variants={revealItemVariants} className="block">جوهر</motion.span>
+                        </div>
+                        <div className="overflow-hidden">
+                          <motion.span variants={revealItemVariants} className="block italic text-brand-gold">كرم الضيافة</motion.span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col gap-1 lg:gap-2">
+                        <div className="overflow-hidden">
+                          <motion.span variants={revealItemVariants} className="block">The Essence of</motion.span>
+                        </div>
+                        <div className="overflow-hidden">
+                          <motion.span variants={revealItemVariants} className="block italic text-brand-gold">Pure Hospitality</motion.span>
+                        </div>
+                      </div>
+                    )}
+                  </h1>
+                </div>
 
-            <motion.div
-              variants={itemVariants}
-              className={`flex flex-col sm:flex-row gap-6 w-full sm:w-auto relative z-[50] ${isRTL ? 'flex-row-reverse' : ''}`}
-            >
-              <button onClick={() => setView('menu')} className="group px-10 py-5 bg-brand-cream text-brand-dark font-sans text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-brand-gold hover:text-white transition-all duration-300 rounded-sm text-center shadow-[0_20px_40px_rgba(0,0,0,0.3)] relative overflow-hidden active:scale-95">
-                <span className="relative z-10">{UI_TEXT.exploreMenu[lang]}</span>
-              </button>
-              <a href="#locations" className="px-10 py-5 bg-transparent border border-brand-cream/15 text-brand-cream font-sans text-[11px] font-bold uppercase tracking-[0.2em] hover:border-brand-gold hover:text-brand-gold transition-all duration-300 rounded-sm text-center active:scale-95">
-                {UI_TEXT.findBranch[lang]}
-              </a>
-            </motion.div>
-          </motion.div>
+                {/* Description */}
+                <div className="overflow-hidden mb-12 lg:mb-16">
+                  <motion.p
+                    variants={revealItemVariants}
+                    className={`max-w-xl text-brand-stone/70 font-sans text-lg md:text-xl lg:text-2xl leading-relaxed ${isRTL ? 'text-right ml-auto' : 'text-left mr-auto'}`}
+                  >
+                    {isRTL
+                      ? 'رحلة من المذاق الرفيع في قلب جدة. اكتشف روح الشاي المثلج والحلويات المصنوعة يدوياً، بلمسة من العراقة العربية.'
+                      : 'A journey of refined taste in the heart of Jeddah. Discover the soul of artisanal cold tea and handcrafted sweets, served with timeless Arabian grace.'}
+                  </motion.p>
+                </div>
+
+                {/* Buttons */}
+                <div className="overflow-hidden">
+                  <motion.div
+                    variants={revealItemVariants}
+                    className={`flex flex-col sm:flex-row gap-6 w-full sm:w-auto ${isRTL ? 'flex-row-reverse' : ''}`}
+                  >
+                    <button onClick={() => setView('menu')} className="group px-10 py-5 bg-brand-cream text-brand-dark font-sans text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-brand-gold hover:text-white transition-all duration-300 rounded-sm text-center shadow-[0_20px_40px_rgba(0,0,0,0.3)] relative overflow-hidden active:scale-95">
+                      <span className="relative z-10">{UI_TEXT.exploreMenu[lang]}</span>
+                    </button>
+                    <a href="#locations" className="px-10 py-5 bg-transparent border border-brand-cream/15 text-brand-cream font-sans text-[11px] font-bold uppercase tracking-[0.2em] hover:border-brand-gold hover:text-brand-gold transition-all duration-300 rounded-sm text-center active:scale-95">
+                      {UI_TEXT.findBranch[lang]}
+                    </a>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           {/* Composition Container: Professional Collage - Optimized */}
           <div className="relative min-h-[700px] lg:min-h-[900px] w-full hidden lg:flex items-center justify-center lg:order-2">
