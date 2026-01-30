@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { LanguageContext, NavigationContext } from '../../App';
@@ -30,6 +30,35 @@ const Hero: React.FC = () => {
   const scaleHero = useTransform(scrollYProgress, [0, 0.4], [1, 0.98]);
 
   const isRTL = lang === 'ar';
+
+  // Carousel Logic
+  const HERO_IMAGES = [
+    "/assets/EmptyName 54.jpg",
+    "/assets/EmptyName 55.jpg",
+    "/assets/EmptyName 53.jpg"
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const carouselVariants = {
+    enter: { opacity: 0, scale: 1.1 },
+    center: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.8 }
+    }
+  };
 
   // Premium Reveal Variants
   const revealContainerVariants = {
@@ -202,63 +231,40 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Composition Container: Professional Collage - Optimized */}
-          <div className="relative min-h-[700px] lg:min-h-[900px] w-full hidden lg:flex items-center justify-center lg:order-2">
+          {/* Hero Carousel - Premium Implementation - Refined Modern */}
+          <div className="relative min-h-[500px] lg:min-h-[700px] w-full hidden lg:flex items-center justify-center lg:order-2 perspective-1000">
+            <div className="relative w-full max-w-[550px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-brand-cream/10 bg-brand-stone/5">
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.img
+                  key={currentSlide}
+                  variants={carouselVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  src={HERO_IMAGES[currentSlide]}
+                  alt="Hero Ambience"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
 
-            {/* Top-Right Layer: Context */}
-            <motion.div
-              style={{ y: useTransform(smoothYProgress, [0, 1], [0, -40]) }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ scale: 1.02 }}
-              className={`absolute top-[5%] ${isRTL ? 'left-[10%]' : 'right-[10%]'} w-[45%] h-[35%] z-10 will-change-transform`}
-            >
-              <motion.div
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-full h-full overflow-hidden rounded-2xl shadow-xl border border-white/10 bg-brand-stone/5"
-              >
-                <img src="/assets/EmptyName 55.jpg" alt="Artisanal Ambience" className="w-full h-full object-cover transition-transform duration-[4s] hover:scale-105" />
-              </motion.div>
-            </motion.div>
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent pointer-events-none" />
 
-            {/* Middle Layer: main focal */}
-            <motion.div
-              style={{ y: yImageLarge }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ scale: 1.03 }}
-              className={`absolute top-[22%] ${isRTL ? 'right-[5%]' : 'left-[5%]'} w-[65%] h-[55%] z-20 will-change-transform`}
-            >
-              <motion.div
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-full h-full overflow-hidden rounded-3xl shadow-2xl border border-white/10 bg-brand-stone/5"
-              >
-                <img src="/assets/EmptyName 54.jpg" alt="White Heart Selection" className="w-full h-full object-cover transition-transform duration-[6s] hover:scale-105" />
-              </motion.div>
-            </motion.div>
+              {/* Progress Indicators */}
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                {HERO_IMAGES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`h-1 rounded-full transition-all duration-500 ${idx === currentSlide ? "w-8 bg-brand-cream/90" : "w-1.5 bg-brand-cream/20 hover:bg-brand-cream/40"
+                      }`}
+                  />
+                ))}
+              </div>
+            </div>
 
-            {/* Bottom Layer: Details */}
-            <motion.div
-              style={{ y: yImageSmall }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ scale: 1.02 }}
-              className={`absolute bottom-[10%] ${isRTL ? 'left-[15%]' : 'right-[15%]'} w-[50%] h-[40%] z-30 will-change-transform`}
-            >
-              <motion.div
-                animate={{ y: [-4, 4, -4] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-full h-full overflow-hidden rounded-2xl shadow-xl border-4 border-brand-dark bg-brand-stone/5"
-              >
-                <img src="/assets/EmptyName 53.jpg" alt="Handcrafted Details" className="w-full h-full object-cover transition-transform duration-[4s] hover:scale-105" />
-              </motion.div>
-            </motion.div>
-
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-gold/5 blur-[120px] -z-10 rounded-full scale-110" />
+            {/* Subtle Back Glow (Modern) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[550px] aspect-[4/5] bg-brand-accent/10 blur-[90px] -z-10 rounded-full opacity-60" />
           </div>
         </div>
       </div>
