@@ -78,7 +78,7 @@ const Menu: React.FC<MenuProps> = ({ teaser = false }) => {
                 <div className="relative overflow-hidden mb-8 rounded-sm shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] aspect-[4/5] bg-brand-stone/10">
                   <img src={item.image} alt={item.name[lang]} className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110" />
                   {item.popular && (
-                    <div className={`absolute top-6 ${isRTL ? 'left-6' : 'right-6'} bg-brand-gold text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 shadow-2xl`}>
+                    <div className={`absolute top-6 ${isRTL ? 'left-6' : 'right-6'} bg-brand-accent text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 shadow-2xl`}>
                       {UI_TEXT.bestSeller[lang]}
                     </div>
                   )}

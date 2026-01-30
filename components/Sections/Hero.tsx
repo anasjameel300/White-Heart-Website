@@ -151,19 +151,19 @@ const Hero: React.FC = () => {
                   <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-brand-cream font-medium leading-[1.1] tracking-tight">
                     {isRTL ? (
                       <div className="flex flex-col gap-1 lg:gap-2">
-                        <div className="overflow-hidden">
+                        <div className="overflow-hidden pb-2">
                           <motion.span variants={revealItemVariants} className="block">جوهر</motion.span>
                         </div>
-                        <div className="overflow-hidden">
+                        <div className="overflow-hidden pb-2">
                           <motion.span variants={revealItemVariants} className="block italic text-brand-gold">كرم الضيافة</motion.span>
                         </div>
                       </div>
                     ) : (
                       <div className="flex flex-col gap-1 lg:gap-2">
-                        <div className="overflow-hidden">
+                        <div className="overflow-hidden pb-2">
                           <motion.span variants={revealItemVariants} className="block">The Essence of</motion.span>
                         </div>
-                        <div className="overflow-hidden">
+                        <div className="overflow-hidden pb-2">
                           <motion.span variants={revealItemVariants} className="block italic text-brand-gold">Pure Hospitality</motion.span>
                         </div>
                       </div>
