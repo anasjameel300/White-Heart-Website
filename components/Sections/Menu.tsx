@@ -59,8 +59,8 @@ const Menu: React.FC<MenuProps> = ({ teaser = false }) => {
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
                   className={`text-xs font-sans uppercase tracking-[0.3em] px-8 py-4 transition-all relative group ${activeCategory === cat.id
-                      ? 'text-brand-dark font-bold'
-                      : 'text-brand-dark/30 hover:text-brand-dark'
+                    ? 'text-brand-dark font-bold'
+                    : 'text-brand-dark/30 hover:text-brand-dark'
                     }`}
                 >
                   {cat.name[lang]}
@@ -78,7 +78,7 @@ const Menu: React.FC<MenuProps> = ({ teaser = false }) => {
                 <div className="relative overflow-hidden mb-8 rounded-sm shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] aspect-[4/5] bg-brand-stone/10">
                   <img src={item.image} alt={item.name[lang]} className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110" />
                   {item.popular && (
-                    <div className={`absolute top-6 ${isRTL ? 'left-6' : 'right-6'} bg-brand-gold text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 shadow-2xl`}>
+                    <div className={`absolute top-6 ${isRTL ? 'left-6' : 'right-6'} bg-brand-accent text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 shadow-2xl`}>
                       {UI_TEXT.bestSeller[lang]}
                     </div>
                   )}
@@ -90,14 +90,14 @@ const Menu: React.FC<MenuProps> = ({ teaser = false }) => {
                 </div>
                 <div className={`flex flex-col gap-4 ${isRTL ? 'text-right' : 'text-left'}`}>
                   <div className={`flex justify-between items-baseline gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <h4 className="font-serif text-3xl text-brand-dark group-hover:text-brand-gold transition-colors duration-500 tracking-tight">
+                    <h4 className="font-serif text-3xl text-brand-dark group-hover:text-brand-gold transition-colors duration-500 tracking-tight break-words">
                       {item.name[lang]}
                     </h4>
                     <span className="font-sans text-brand-gold font-bold text-sm tracking-widest uppercase">
                       {item.price}
                     </span>
                   </div>
-                  <p className="font-sans text-brand-dark/50 text-base md:text-lg leading-relaxed max-w-sm">
+                  <p className="font-sans text-brand-dark/50 text-base md:text-lg leading-loose max-w-sm break-words">
                     {item.description[lang]}
                   </p>
                 </div>

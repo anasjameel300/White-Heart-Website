@@ -10,18 +10,18 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-brand-dark text-brand-cream pt-32 pb-12 relative overflow-hidden">
       <div className="absolute inset-0 bg-mashrabiya opacity-5 pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
           <div className={`col-span-1 md:col-span-2 ${isRTL ? 'text-right' : 'text-left'}`}>
             <div className={`flex items-center gap-3 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <Heart className="w-8 h-8 fill-brand-gold stroke-brand-gold" />
-                <span className="font-serif text-3xl font-bold tracking-tighter">
-                  {isRTL ? 'وايت هارت كافيه' : 'White Heart Café'}
-                </span>
+              <Heart className="w-8 h-8 fill-brand-gold stroke-brand-gold" />
+              <span className="font-serif text-3xl font-bold tracking-tighter">
+                {isRTL ? 'وايت هارت كافيه' : 'White Heart Café'}
+              </span>
             </div>
-            <p className="text-brand-stone/50 font-sans text-lg max-w-sm mb-10 leading-relaxed mx-auto lg:mx-0">
-              {isRTL 
+            <p className="text-brand-stone/50 font-sans text-lg max-w-sm mb-10 leading-relaxed mx-auto lg:mx-0 break-words">
+              {isRTL
                 ? 'نرتقي بتجربة الكافيه في جدة من خلال خلطاتنا المميزة، والحلويات المصنوعة يدوياً، ومساحة مصممة للتواصل.'
                 : 'Elevating the café experience in Jeddah with signature blends, artisanal treats, and a space designed for connection.'}
             </p>
@@ -61,12 +61,12 @@ const Footer: React.FC = () => {
         </div>
 
         <div className={`pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <p className="text-brand-stone/30 text-[10px] uppercase tracking-widest">
-                © {new Date().getFullYear()} White Heart Café. {isRTL ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
-            </p>
-            <p className="text-brand-stone/30 text-[10px] uppercase tracking-widest flex items-center gap-1">
-                {isRTL ? 'صنع بكل' : 'Designed with'} <Heart size={10} className="fill-brand-accent stroke-brand-accent" /> {isRTL ? 'في جدة' : 'in Jeddah'}
-            </p>
+          <p className="text-brand-stone/30 text-[10px] uppercase tracking-widest">
+            © {new Date().getFullYear()} White Heart Café. {isRTL ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
+          </p>
+          <p className="text-brand-stone/30 text-[10px] uppercase tracking-widest flex items-center gap-1">
+            {isRTL ? 'صنع بكل' : 'Designed with'} <Heart size={10} className="fill-brand-accent stroke-brand-accent" /> {isRTL ? 'في جدة' : 'in Jeddah'}
+          </p>
         </div>
       </div>
     </footer>

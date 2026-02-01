@@ -34,7 +34,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Signature Ice Tea', ar: 'آيس تي وايت هارت' },
     description: { en: 'Refreshing house-blend ice tea. (163 Cal)', ar: 'آيس تي بخلطة وايت هارت المنعشة. (١٦٣ سعرة)' },
     category: 'Cold Tea',
-    price: '16 rs',
+    price: '16 SR',
     image: '/assets/Ice Tea.jpg',
     popular: true,
     pairings: ['2', '4']
@@ -44,7 +44,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Classic Cookies', ar: 'كوكيز كلاسيك' },
     description: { en: 'Traditional warm chocolate chip cookies. (347 Cal)', ar: 'كوكيز كلاسيك دافئ بقطع الشوكولاتة. (٣٤٧ سعرة)' },
     category: 'Cookies',
-    price: '10 rs',
+    price: '10 SR',
     image: '/assets/Clasic cookies.jpg',
     popular: true,
     pairings: ['1', '7']
@@ -54,7 +54,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Crunchy Cookies', ar: 'كوكيز كرانشي' },
     description: { en: 'Crispy cookies with a perfect bite. (347 Cal)', ar: 'كوكيز كرانشي مقرمش ومثالي. (٣٤٧ سعرة)' },
     category: 'Cookies',
-    price: '13 rs',
+    price: '13 SR',
     image: '/assets/Crunchy cookies .jpg',
     pairings: ['1']
   },
@@ -63,7 +63,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Vanilla Ice Cream', ar: 'آيس كريم فانيليا' },
     description: { en: 'Smooth and creamy vanilla gelato. (180 Cal)', ar: 'آيس كريم فانيليا كريمي وناعم. (١٨٠ سعرة)' },
     category: 'Ice Cream',
-    price: '5 rs',
+    price: '5 SR',
     image: '/assets/Ice cream.jpg',
     pairings: ['2', '3']
   },
@@ -72,7 +72,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Berry Cheesecake', ar: 'تشيزكيك التوت' },
     description: { en: 'Rich cheesecake topped with fresh berry compote. (356 Cal)', ar: 'تشيزكيك غني مُغطى بصلصة التوت الطازجة. (٣٥٦ سعرة)' },
     category: 'Cakes',
-    price: '18 rs',
+    price: '18 SR',
     image: '/assets/cheesecake Raspberry .jpg',
     pairings: ['7']
   },
@@ -81,7 +81,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Caramel Cheesecake', ar: 'تشيزكيك الكراميل' },
     description: { en: 'Creamy cheesecake with a rich caramel finish. (356 Cal)', ar: 'تشيزكيك كريمي مع طبقة غنية من الكراميل. (٣٥٦ سعرة)' },
     category: 'Cakes',
-    price: '18 rs',
+    price: '18 SR',
     image: '/assets/CheeseCake  Caramel.jpg',
     pairings: ['8']
   },
@@ -90,7 +90,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Americano', ar: 'أمريكانو' },
     description: { en: 'Pure black coffee brewed from premium beans. (4 Cal)', ar: 'قهوة سوداء صافية محضرة من أجود الأنواع. (٤ سعرات)' },
     category: 'Coffee',
-    price: '13 rs',
+    price: '13 SR',
     image: '/assets/Black Coffee L.jpg',
     pairings: ['2', '5']
   },
@@ -99,7 +99,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: { en: 'Classic Cookies with Ice Cream', ar: 'كوكيز مع آيس كريم' },
     description: { en: 'A divine combination of warm cookies and cold gelato.', ar: 'مزيج رائع بين الكوكيز الدافئ والآيس كريم البارد.' },
     category: 'Cookies',
-    price: '12 rs',
+    price: '12 SR',
     image: '/assets/Clasic cookies with ice cream .jpg',
     pairings: ['7']
   }
